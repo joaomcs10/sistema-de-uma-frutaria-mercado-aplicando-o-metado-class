@@ -36,6 +36,10 @@ class frutas:
     def status(self):
         print(f'\nFruta: {self.fruta}\n Preço por kg: {self.preco_por_kg}\n quantidade em estoque: {self.quantidade_em_estoque_kg} kg')
 
+    def mostrar_preso(self):
+
+        print(f' O preço da {self.fruta} e de R$ {self.preco_por_kg}')
+
     def venda(self):
 
         while True:
@@ -100,7 +104,7 @@ while True:
          continue
 
      if entrada == 1 :
-         fruta = input('Digite o nome da fruta: ')
+         fruta = str(input('Digite o nome da fruta: '))
          preco_por_kg = float(input('Digite o preço do kg da fruta :'))
          quantidade_por_kg = float(input('Digite o quantidade de kg da fruta :'))
 
@@ -119,4 +123,55 @@ while True:
              print('Fruta não encontrado no estoque')
 
      elif entrada == 4:
+
+         nova_fruta = input('Digite o nome da fruta para verificar se existe no estoque: ')
+         encontrada = False
+
+         for fruta in lista_frutas:
+
+             if fruta.fruta == nova_fruta:
+
+                 fruta.comprar()
+
+                 encontrada = True
+
+                 break
+
+         if not encontrada:
+
+             print('fruta não encontrada, Vamos cadastrar ela')
+
+             fruta = str(input('Digite o nome da fruta: '))
+             preco_por_kg = float(input('Digite o preço do kg da fruta :'))
+             quantidade_por_kg = float(input('Digite o quantidade de kg da fruta :'))
+
+             nova_fruta = frutas(fruta, preco_por_kg, quantidade_por_kg)
+             lista_frutas.append(nova_fruta)
+
+     elif entrada == 5 :
+
+         pesquisar_fruta = str(input('Digite o nome da fruta: '))
+
+         entrada = False
+
+         for fruta in lista_frutas:
+
+             if fruta.fruta == lista_frutas:
+
+                 fruta.mostrar_preco()
+
+                 entrada = True
+
+                 break
+             else:
+
+                 print('Fruta não encontrada')
+
+     elif entrada == 6 :
+
+         print('Programa finalizado com sucesso!')
+
+     else:
+
+         print('Opção invalida')
          
